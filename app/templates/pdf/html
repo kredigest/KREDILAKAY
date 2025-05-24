@@ -1,0 +1,6 @@
+<html lang="ht">
+<head>
+  <link rel="stylesheet" href="/static/css/accessibility.css">
+  <!-- Charger OpenDyslexic si nécessaire -->
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/open-dyslexic">
+</head>
