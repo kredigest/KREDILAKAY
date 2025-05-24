@@ -3,6 +3,6 @@
 from flask import Flask
 
 def create_app():
-    app = Flask(_name_)
+    app = Flask(__name__)
     # ... tes routes, configs, etc.
     return app
