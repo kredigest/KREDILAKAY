@@ -111,3 +111,9 @@ class Settings:
     # Pénalités
     PENALTY_RATE = 0.02  # 2% par jour
     GRACE_PERIOD_DAYS = 5
+
+class Settings:
+    SENDGRID_API_KEY = "votre_clé_sendgrid"
+    NOREPLY_EMAIL = "noreply@kredilakay.ht"
+    EMAIL_TEMPLATES_DIR = "/app/templates/emails"
+    LATE_PENALTY_RATE = 0.02  # 2% par jour
