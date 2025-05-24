@@ -1,14 +1,113 @@
-/* Mode Contraste Élevé */
-body.high-contrast {
-    filter: contrast(120%) brightness(110%);
+/* KREDILAKAY/app/static/css/accessibility.css */
+/* Styles d'accessibilité pour une meilleure inclusion */
+
+:root {
+    --access-high-contrast-text: #000000;
+    --access-high-contrast-bg: #FFFFFF;
+    --access-highlight: #FFD700;
+    --access-link: #0066CC;
 }
 
-/* Couleurs Daltoniens */
-.chart-color-1 { fill: #3366CC !important; }  /* Bleu */
-.chart-color-2 { fill: #DC3912 !important; }  /* Rouge */
-.chart-color-3 { fill: #FF9900 !important; }  /* Jaune */
+/* Mode Contraste Élevé */
+body.accessibility-high-contrast {
+    background-color: var(--access-high-contrast-bg) !important;
+    color: var(--access-high-contrast-text) !important;
+}
 
-/* Textes Alternatifs */
-img[alt=""] { 
-    border: 1px dashed #f00 !important;  /* Alerte visuelle si alt manquant */
+.accessibility-high-contrast * {
+    background-color: var(--access-high-contrast-bg) !important;
+    color: var(--access-high-contrast-text) !important;
+    border-color: var(--access-high-contrast-text) !important;
+}
+
+/* Styles pour la dyslexie */
+body.accessibility-dyslexia-friendly {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.1em !important;
+}
+
+/* Taille de texte ajustable */
+body.accessibility-large-text {
+    font-size: 1.25rem !important;
+}
+
+body.accessibility-extra-large-text {
+    font-size: 1.5rem !important;
+}
+
+/* Styles pour le daltonisme */
+.accessibility-color-blind {
+    filter: url('#protanopia');
+}
+
+/* Focus amélioré pour navigation au clavier */
+*:focus {
+    outline: 3px solid var(--access-highlight) !important;
+    outline-offset: 2px !important;
+}
+
+/* Liens accessibles */
+a {
+    color: var(--access-link);
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+    background-color: var(--access-highlight);
+}
+
+/* Boutons accessibles */
+button, .btn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5em 1em;
+}
+
+/* Masquer visuellement mais accessible aux lecteurs d'écran */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Styles spécifiques Kreyòl */
+.lang-ht {
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* Animation réduite */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Overlay de contrôle d'accessibilité */
+#accessibility-toolbar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#accessibility-toolbar button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
