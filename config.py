@@ -130,3 +130,5 @@ class Settings:
 class Settings:
     WATERMARK_TEXT = "DOCUMENT KREDILAKAY - NE PAS COPIER"
     SECURITY_LOGO_PATH = "/app/static/images/security_logo.png"
+class Settings:
+    PENALTY_RATE = "0.02"  # 2% par jour de retard
