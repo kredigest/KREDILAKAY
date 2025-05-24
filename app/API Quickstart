@@ -1,0 +1,11 @@
+import requests
+
+headers = {
+    "Authorization": f"Bearer {access_token}",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(
+    "https://api.kredigest.ht/v1/loans",
+    headers=headers
+)
