@@ -42,3 +42,8 @@ HEALTHCHECK --interval=30s --timeout=3s \
     CMD curl -f http://localhost:5000/health || exit 1
 
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--threads", "2", "app:app"]
+
+# Ajouter ces lignes à votre Dockerfile
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
