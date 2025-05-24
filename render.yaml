@@ -34,3 +34,12 @@ databases:
     plan: free
     region: miami  # Plus proche d'Haïti
     postgresqlVersion: 14
+services:
+  - type: web
+    name: nginx
+    dockerfilePath: ./docker/nginx/Dockerfile
+    envVars:
+      - key: DOMAIN
+        value: kredilakay.ht
+      - key: CERTBOT_EMAIL
+        value: admin@kredilakay.onrender.com
