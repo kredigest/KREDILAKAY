@@ -1,0 +1,6 @@
+# KREDILAKAY/.env.example
+DATABASE_URL=postgresql://user:password@localhost/kredilakay
+TWILIO_ACCOUNT_SID=your_twilio_sid
+TWILIO_AUTH_TOKEN=your_twilio_token
+SENDGRID_API_KEY=your_sendgrid_key
+JWT_SECRET_KEY=your_jwt_secret
