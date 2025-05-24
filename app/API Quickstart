@@ -9,3 +9,103 @@ response = requests.get(
     "https://api.kredigest.ht/v1/loans",
     headers=headers
 )
+
+# KREDILAKAY/app/api/quickstart.py
+from fastapi import FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import List
+import uuid
+from datetime import datetime
+
+app = FastAPI(
+    title="API KrediLakay",
+    description="API officielle pour l'application de microcrédit KrediLakay",
+    version="1.0.0",
+    contact={
+        "name": "Support Technique",
+        "email": "support@kredilakay.ht"
+    },
+    license_info={
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+)
+
+# Configuration CORS pour l'accès depuis Haïti
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Modèles Pydantic
+class Client(BaseModel):
+    id: str
+    full_name: str
+    phone: str
+    address: str
+
+class LoanRequest(BaseModel):
+    client_id: str
+    amount: float
+    duration_days: int
+    purpose: str
+
+class PaymentReceipt(BaseModel):
+    receipt_number: str
+    amount: float
+    payment_date: datetime
+    method: str
+
+# Base de données simulée
+fake_db = {
+    "clients": [],
+    "loans": [],
+    "payments": []
+}
+
+# Endpoints Clients
+@app.post("/clients/", response_model=Client, status_code=status.HTTP_201_CREATED)
+def create_client(client: Client):
+    """Enregistre un nouveau client"""
+    client.id = str(uuid.uuid4())
+    fake_db["clients"].append(client.dict())
+    return client
+
+@app.get("/clients/", response_model=List[Client])
+def list_clients():
+    """Liste tous les clients"""
+    return fake_db["clients"]
+
+# Endpoints Prêts
+@app.post("/loans/", status_code=status.HTTP_201_CREATED)
+def create_loan(loan: LoanRequest):
+    """Crée une nouvelle demande de prêt"""
+    loan_data = loan.dict()
+    loan_data["id"] = str(uuid.uuid4())
+    loan_data["created_at"] = datetime.now()
+    loan_data["status"] = "pending"
+    fake_db["loans"].append(loan_data)
+    return {"message": "Demande de prêt enregistrée", "loan_id": loan_data["id"]}
+
+# Endpoints Paiements
+@app.post("/payments/", response_model=PaymentReceipt)
+def record_payment(amount: float, method: str, loan_id: str):
+    """Enregistre un paiement"""
+    receipt = PaymentReceipt(
+        receipt_number=f"REC-{datetime.now().strftime('%Y%m%d')}-{len(fake_db['payments']) + 1}",
+        amount=amount,
+        payment_date=datetime.now(),
+        method=method
+    )
+    fake_db["payments"].append(receipt.dict())
+    return receipt
+
+# Documentation Swagger UI
+@app.get("/", include_in_schema=False)
+def redirect_to_docs():
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/docs")
