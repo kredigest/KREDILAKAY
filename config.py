@@ -127,3 +127,6 @@ class Settings:
     WATERMARK_TEXT = "KREDILAKAY DOCUMENT OFFICIEL"
     BASE_URL = "https://app.kredilakay.ht"
 
+class Settings:
+    WATERMARK_TEXT = "DOCUMENT KREDILAKAY - NE PAS COPIER"
+    SECURITY_LOGO_PATH = "/app/static/images/security_logo.png"
