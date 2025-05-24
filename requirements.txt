@@ -34,7 +34,6 @@ sendgrid==6.10.0
 twilio==8.10.1
 
 # Sécurité et chiffrement
-cryptography==42.0.5
 python-dotenv==1.0.1
 
 # API publique et documentation
