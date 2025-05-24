@@ -60,3 +60,7 @@ chart-studio==1.1.0
 
 # Autres
 requests==2.31.0
+reportlab==3.6.12
+PyPDF2==3.0.1
+qrcode[pil]==7.4.2
+endesive==1.4.1
