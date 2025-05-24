@@ -1,0 +1,13 @@
+from PIL import Image, ImageDraw
+
+img = Image.new('RGBA', (48, 48), (0, 0, 0, 0))
+draw = ImageDraw.Draw(img)
+
+draw.rectangle([(6,1), (42,47)], fill=(231, 76, 60))
+draw.rectangle([(14,12), (34,16)], fill=(255,255,255))
+draw.rectangle([(14,18), (34,22)], fill=(255,255,255))
+draw.rectangle([(14,24), (28,28)], fill=(255,255,255))
+draw.rectangle([(30,24), (36,36)], fill=(255,255,255))
+draw.rectangle([(14,30), (26,36)], fill=(255,255,255))
+
+img.save('app/static/icons/pdf.png')
