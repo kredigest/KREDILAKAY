@@ -65,3 +65,7 @@ config = {
     
     'default': DevelopmentConfig
 }
+class Settings:
+    JWT_SECRET = "votre_clé_secrète_complexe"  # Générer via: openssl rand -hex 32
+    JWT_ALGORITHM = "HS256"
+    MFA_VALIDITY_WINDOW = 1  # en minutes
