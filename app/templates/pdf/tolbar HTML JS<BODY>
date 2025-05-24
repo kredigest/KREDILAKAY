@@ -1,0 +1,11 @@
+<div id="accessibility-toolbar" class="sr-only">
+  <button onclick="toggleHighContrast()">Contraste élevé</button>
+  <button onclick="toggleDyslexiaFont()">Police Dyslexie</button>
+  <button onclick="increaseFontSize()">Agrandir texte</button>
+</div>
+
+<script>
+function toggleHighContrast() {
+    document.body.classList.toggle('accessibility-high-contrast');
+}
+</script>
