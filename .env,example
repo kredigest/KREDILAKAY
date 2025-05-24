@@ -4,3 +4,26 @@ TWILIO_ACCOUNT_SID=your_twilio_sid
 TWILIO_AUTH_TOKEN=your_twilio_token
 SENDGRID_API_KEY=your_sendgrid_key
 JWT_SECRET_KEY=your_jwt_secret
+
+{% extends "pdf/base.html" %}
+
+{% block document_title %}CONTRAT DE PRÊT{% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="section-title">1. Détails du Prêt</div>
+    <p>
+        Montant: <strong>{{ loan.amount|currency }} HTG</strong><br>
+        Durée: <strong>{{ loan.duration }} jours</strong><br>
+        Taux journalier: <strong>{{ loan.interest_rate }}%</strong>
+    </p>
+</div>
+
+<div class="section">
+    <div class="section-title">2. Conditions Générales</div>
+    <div class="legal-clause">
+        <p class="legal-warning">En cas de retard de paiement, une pénalité de 2% par jour sera appliquée.</p>
+        <p>Le présent contrat est régi par les lois de la République d'Haïti.</p>
+    </div>
+</div>
+{% endblock %}
