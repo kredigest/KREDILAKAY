@@ -69,3 +69,20 @@ reportlab>=3.6.0e==1.4.1
 
 PyPDF2>=3.0.0
 reportlab>=3.6.0
+
+# KREDILAKAY/requirements.txt
+fastapi==0.95.2
+uvicorn==0.22.0
+gunicorn==20.1.0
+python-multipart==0.0.6
+psycopg2-binary==2.9.6
+sqlalchemy==2.0.15
+alembic==1.11.1
+python-jose==3.3.0
+passlib==1.7.4
+python-dotenv==1.0.0
+twilio==8.2.0
+sendgrid==6.11.0
+PyPDF2==3.0.1
+reportlab==4.0.4
+qrcode[pil]==7.4.2
