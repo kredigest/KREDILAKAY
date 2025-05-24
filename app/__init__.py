@@ -1,8 +1,5 @@
-# app/__init__.py
-
 from flask import Flask
 
 def create_app():
-    app = Flask(__name__)
-    # ... tes routes, configs, etc.
+    app = Flask(_name_)
     return app
