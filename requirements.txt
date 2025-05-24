@@ -1,0 +1,62 @@
+Flask==2.2.5
+gunicorn==20.1.0
+
+# Base de données
+Flask-SQLAlchemy==3.0.3
+psycopg2-binary==2.9.9
+
+# Authentification
+Flask-Login==0.6.3
+Flask-JWT-Extended==4.6.0
+Flask-Bcrypt==1.0.1
+Flask-Limiter==3.5.0
+
+# Formulaires et validation
+Flask-WTF==1.1.1
+email-validator==2.1.0.post1
+
+# Génération PDF
+xhtml2pdf==0.2.15
+PyPDF2==3.0.1
+reportlab==3.6.13
+pdf2image==1.16.3
+
+# Signature numérique
+endesive==2.10.4
+pyopenssl==23.2.0
+
+# Images et traitement
+Pillow==10.2.0
+
+# Envois Email et WhatsApp
+sendgrid==6.10.0
+twilio==8.10.1
+
+# Sécurité et chiffrement
+cryptography==42.0.5
+python-dotenv==1.0.1
+
+# API publique et documentation
+Flask-RESTX==1.2.0
+
+# OCR (si scan pièce d’identité)
+pytesseract==0.3.10
+
+# Monitoring / logs
+python-json-logger==2.0.7
+
+# Export Excel
+openpyxl==3.1.2
+pandas==2.2.1
+
+# IA (si scoring crédit)
+torch==2.1.2
+scikit-learn==1.4.2
+numpy==1.26.4
+
+# Accessibilité frontend (si PWA ou charts)
+matplotlib==3.8.4
+chart-studio==1.1.0
+
+# Autres
+requests==2.31.0
