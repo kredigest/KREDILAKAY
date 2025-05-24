@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr-HT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Document KrediLakay{% endblock %}</title>
+    <style>
+        /* KREDILAKAY/app/templates/pdf/base.css */
+        @page {
+            size: A4;
+            margin: 2cm;
+            @bottom-right {
+                content: "Page " counter(page) " sur " counter(pages);
+                font-size: 10pt;
+                color: #666;
+            }
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            font-size: 12pt;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2cm;
+            border-bottom: 2px solid #e53e3e;
+            padding-bottom: 1cm;
+        }
+
+        .logo {
+            height: 80px;
+            margin-bottom: 0.5cm;
+        }
+
+        .document-title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #2d3748;
+            text-transform: uppercase;
+        }
+
+        .client-info {
+            margin: 1cm 0;
+            padding: 0.5cm;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3182ce;
+        }
+
+        .section {
+            margin-bottom: 1cm;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5cm;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.3cm;
+        }
+
+        .signature-area {
+            margin-top: 2cm;
+            page-break-inside: avoid;
+        }
+
+        .signature-line {
+            width: 60%;
+            border-top: 1px solid #333;
+            margin: 1cm 0;
+        }
+
+        .footer {
+            font-size: 9pt;
+            color: #666;
+            text-align: center;
+            margin-top: 1cm;
+        }
+
+        .watermark {
+            position: fixed;
+            opacity: 0.1;
+            font-size: 80pt;
+            color: #e53e3e;
+            transform: rotate(-45deg);
+            left: 10%;
+            top: 40%;
+            z-index: -1;
+        }
+
+        .qr-code {
+            width: 100px;
+            position: fixed;
+            right: 2cm;
+            bottom: 2cm;
+        }
+
+        /* Spécifique pour les documents légaux haïtiens */
+        .legal-clause {
+            margin-left: 1cm;
+            text-align: justify;
+        }
+
+        .legal-warning {
+            font-weight: bold;
+            color: #e53e3e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Filigrane de sécurité -->
+    <div class="watermark">KREDILAKAY</div>
+
+    <!-- En-tête standard -->
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/logo_kredilakay.png', _external=True) }}" class="logo">
+        <div class="document-title">{% block document_title %}DOCUMENT OFFICIEL{% endblock %}</div>
+        <div>Référence: {% block document_ref %}{{ document_id }}{% endblock %}</div>
+    </div>
+
+    <!-- Bloc client -->
+    {% block client_info %}
+    <div class="client-info">
+        <strong>Client:</strong> {{ client.full_name }}<br>
+        <strong>ID:</strong> {{ client.id }}<br>
+        <strong>Date:</strong> {{ date|date_format }}
+    </div>
+    {% endblock %}
+
+    <!-- Contenu principal -->
+    <div class="content">
+        {% block content %}
+        <!-- Le contenu spécifique du PDF sera inséré ici -->
+        {% endblock %}
+    </div>
+
+    <!-- Zone de signature -->
+    {% block signatures %}
+    <div class="signature-area">
+        <div style="float: right; width: 45%;">
+            <div>Fait à {{ location }}, le {{ date|date_format }}</div>
+            <div class="signature-line"></div>
+            <div>Signature du client</div>
+        </div>
+
+        <div style="float: left; width: 45%;">
+            <div>Pour KrediLakay,</div>
+            <div class="signature-line"></div>
+            <div>Signature autorisée</div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    {% endblock %}
+
+    <!-- Pied de page -->
+    <div class="footer">
+        <p>
+            KrediLakay &copy; {{ now.year }} | 
+            Téléphone: {{ contact_phone }} | 
+            Email: {{ contact_email }}<br>
+            {{ legal_notice }}
+        </p>
+    </div>
+
+    <!-- QR Code de vérification -->
+    {% if qr_code_url %}
+    <div class="qr-code">
+        <img src="{{ qr_code_url }}" alt="QR Code de vérification">
+        <div style="font-size: 8pt; text-align: center;">Scanner pour vérifier</div>
+    </div>
+    {% endif %}
+</body>
+</html>
