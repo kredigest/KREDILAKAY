@@ -1,0 +1,14 @@
+/* Mode Contraste Élevé */
+body.high-contrast {
+    filter: contrast(120%) brightness(110%);
+}
+
+/* Couleurs Daltoniens */
+.chart-color-1 { fill: #3366CC !important; }  /* Bleu */
+.chart-color-2 { fill: #DC3912 !important; }  /* Rouge */
+.chart-color-3 { fill: #FF9900 !important; }  /* Jaune */
+
+/* Textes Alternatifs */
+img[alt=""] { 
+    border: 1px dashed #f00 !important;  /* Alerte visuelle si alt manquant */
+}
