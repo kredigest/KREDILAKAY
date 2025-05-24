@@ -117,3 +117,7 @@ class Settings:
     NOREPLY_EMAIL = "noreply@kredilakay.ht"
     EMAIL_TEMPLATES_DIR = "/app/templates/emails"
     LATE_PENALTY_RATE = 0.02  # 2% par jour
+class Settings:
+    BASE_INTEREST_RATE = "0.15"  # 15% de base
+    PENALTY_RATE = "0.02"        # 2% par jour de retard
+    GRACE_PERIOD_DAYS = 5        # Délai de grâce avant pénalités
