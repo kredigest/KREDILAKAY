@@ -132,3 +132,8 @@ class Settings:
     SECURITY_LOGO_PATH = "/app/static/images/security_logo.png"
 class Settings:
     PENALTY_RATE = "0.02"  # 2% par jour de retard
+class Settings:
+    TWILIO_ACCOUNT_SID = "votre_account_sid"
+    TWILIO_AUTH_TOKEN = "votre_auth_token"
+    TWILIO_WHATSAPP_NUMBER = "+14155238886"  # Numéro Twilio Sandbox ou production
+    TEMPLATES_DIR = "/app/templates"
