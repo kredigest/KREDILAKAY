@@ -69,3 +69,11 @@ class Settings:
     JWT_SECRET = "votre_clé_secrète_complexe"  # Générer via: openssl rand -hex 32
     JWT_ALGORITHM = "HS256"
     MFA_VALIDITY_WINDOW = 1  # en minutes
+class Settings:
+    # Clés secrètes pour les fournisseurs
+    NATCOM_SECRET = "votre_cle_natcom"
+    DIGICEL_SECRET = "votre_cle_digicel"
+    UNIBANK_SECRET = "votre_cle_unibank"
+    
+    # Configuration des webhooks
+    WEBHOOK_TIMEOUT = 5  # seconds
