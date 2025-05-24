@@ -77,3 +77,37 @@ class Settings:
     
     # Configuration des webhooks
     WEBHOOK_TIMEOUT = 5  # seconds
+class Settings:
+    # Services de base
+    JWT_SECRET = "votre_clé_jwt_secrète"
+    PDF_TEMPLATES_DIR = "/app/templates/contracts"
+    FONTS_DIR = "/app/static/fonts"
+    
+    # Paiements
+    PAYMENT_PROVIDERS = {
+        'natcom': {
+            'api_key': "votre_api_key",
+            'commission': 0.015  # 1.5%
+        },
+        'digicel': {
+            'api_key': "votre_api_key", 
+            'commission': 0.02   # 2%
+        }
+    }
+    
+    # Stockage
+    DOCUMENT_STORAGE_URI = "s3://kredilakay-documents"
+    STORAGE_ENCRYPTION_KEY = "votre_clé_de_chiffrement"
+    
+    # Notifications
+    TWILIO_SID = "votre_sid_twilio"
+    TWILIO_TOKEN = "votre_token_twilio"
+    SENDGRID_KEY = "votre_clé_sendgrid"
+    
+    # Calcul des risques
+    RISK_MODEL_PATH = "/models/risk_scoring.pkl"
+    RISK_THRESHOLD = 0.7
+    
+    # Pénalités
+    PENALTY_RATE = 0.02  # 2% par jour
+    GRACE_PERIOD_DAYS = 5
