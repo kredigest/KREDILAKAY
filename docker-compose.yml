@@ -27,3 +27,8 @@ services:
     environment:
       - RUN_MIGRATIONS=true
     command: ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+
+services:
+  worker:
+    command: ["celery", "-A", "app.celery", "worker"]
+
