@@ -121,3 +121,9 @@ class Settings:
     BASE_INTEREST_RATE = "0.15"  # 15% de base
     PENALTY_RATE = "0.02"        # 2% par jour de retard
     GRACE_PERIOD_DAYS = 5        # Délai de grâce avant pénalités
+class Settings:
+    PDF_LOGO_PATH = "/app/static/images/logo_kredilakay.png"
+    FONT_DIR = "/app/static/fonts"
+    WATERMARK_TEXT = "KREDILAKAY DOCUMENT OFFICIEL"
+    BASE_URL = "https://app.kredilakay.ht"
+
