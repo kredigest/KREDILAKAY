@@ -4,3 +4,25 @@
   <!-- Charger OpenDyslexic si nécessaire -->
   <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/open-dyslexic">
 </head>
+<!-- Dans votre template dashboard.html -->
+<div class="chart-container">
+    <canvas id="loanStatusChart" 
+            data-values="[120, 35, 80, 15]"
+            height="300"></canvas>
+</div>
+
+<div class="chart-container">
+    <canvas id="paymentTrendsChart"
+            data-values='{"dates":["Jan","Fév","Mar"],"amounts":[50000,75000,60000],"loans_issued":[30000,45000,40000]}'
+            height="300"></canvas>
+</div>
+
+<div class="chart-container">
+    <canvas id="portfolioRiskChart"
+            data-values='{"labels":["Port-au-Prince","Cap-Haïtien","Gonaïves"],"scores":[0.3,0.6,0.8]}'
+            height="300"></canvas>
+</div>
+
+<!-- Chargement des dépendances -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard/chart.js') }}"></script>
