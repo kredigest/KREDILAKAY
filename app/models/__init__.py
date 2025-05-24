@@ -1,26 +1,46 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
+from .base import db
+from .client import Client
+from .loan import Loan
+from .user import User
+from .document import Document, DocumentSignature, DocumentVersion
+from .payment import Payment
+from .audit import AuditLog
+from .notification import Notification
+from .settings import AppSettings
 
-db = SQLAlchemy()
+# Initialisation des relations
+def setup_relationships():
+    """Configure les relations complexes entre modèles"""
+    # Relations Client
+    Client.documents = db.relationship('Document', back_populates='client')
+    Client.loans = db.relationship('Loan', back_populates='client')
 
-def create_app():
-    app = Flask(__name__)
-    
-    # Configuration
-    app.config.from_pyfile('../config.py')  # Ajustez selon la localisation réelle de config.py
-    
-    # Extensions
-    db.init_app(app)
-    CORS(app)
+    # Relations Document
+    Document.signatures = db.relationship(
+        'DocumentSignature',
+        back_populates='document',
+        cascade='all, delete-orphan'
+    )
+    Document.versions = db.relationship(
+        'DocumentVersion',
+        back_populates='document',
+        order_by='DocumentVersion.version_number.desc()',
+        cascade='all, delete-orphan'
+    )
 
-    # Enregistrement des blueprints
-    from app.routes.auth_routes import auth_bp
-    from app.routes.loan_routes import loan_bp
-    from app.routes.admin_routes import admin_bp
-    
-    app.register_blueprint(auth_bp, url_prefix='/auth')
-    app.register_blueprint(loan_bp, url_prefix='/loans')
-    app.register_blueprint(admin_bp, url_prefix='/admin')
+    # Relations croisées
+    Payment.loan = db.relationship('Loan', back_populates='payments')
+    Loan.documents = db.relationship('Document', back_populates='loan')
 
-    return app
+__all__ = [
+    'Client',
+    'Loan',
+    'User',
+    'Document',
+    'DocumentSignature',
+    'DocumentVersion',
+    'Payment',
+    'AuditLog',
+    'Notification',
+    'AppSettings'
+]
