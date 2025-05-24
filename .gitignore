@@ -1,0 +1,98 @@
+# Environnements
+.env
+.env.*
+!.env.example
+venv/
+.env.local
+.env.development
+.env.test
+.env.production
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+_pycache_/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.so
+.Python
+
+# Node/React
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.next/
+out/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Fichiers systèmes
+.DS_Store
+Thumbs.db
+
+# Fichiers générés
+staticfiles/
+media/
+uploads/
+
+# Documentation générée
+docs/_build/
+
+# Tests
+coverage/
+htmlcov/
+.pytest_cache/
+
+# Mobile/React Native
+*.keystore
+*.jks
+*.apk
+*.aab
+
+# Modèles IA
+*.pth
+*.h5
+*.pt
+
+# Fichiers temporaires
+*.tmp
+*.temp
+
+# Fichiers confidentiels
+config_secret.json
+firebase-key.json
+google-services.json
+GoogleService-Info.plist
+
+# Docker
+docker-compose.override.yml
+
+# macOS
+._*
+
+# Windows
+[Tt]humbs.db
+Desktop.ini
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Editor
+*.sublime-workspace
+*.sublime-project
