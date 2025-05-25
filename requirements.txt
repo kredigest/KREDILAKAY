@@ -34,7 +34,7 @@ pandas==2.2.1
 openpyxl==3.1.2
 numpy==1.26.4
 
-# === AI / ML ===
+# === AI/ML ===
 torch==2.1.2
 scikit-learn==1.4.2
 
@@ -44,6 +44,7 @@ plotly==5.18.0
 
 # === UTILITIES ===
 requests==2.31.0
-qrcode[pil]==7.4.4
+qrcode[pil]==7.4.2
 Pillow==10.2.0
 python-multipart==0.0.6
+python-json-logger==2.0.7
