@@ -1,84 +1,49 @@
-Flask==2.2.5
-gunicorn==20.1.0
+# === CORE ===
+Flask==2.3.2
+gunicorn==21.2.0
+python-dotenv==1.0.0
 
-# Base de données
-Flask-SQLAlchemy==3.0.3
+# === DATABASE ===
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.23
 psycopg2-binary==2.9.9
+alembic==1.12.0
 
-# Authentification
+# === AUTHENTICATION ===
 Flask-Login==0.6.3
-Flask-JWT-Extended==4.6.0
-Flask-Bcrypt==1.0.1
-Flask-Limiter==3.5.0
+Flask-JWT-Extended==4.5.3
+passlib==1.7.4
+bcrypt==4.0.1
 
-# Formulaires et validation
-Flask-WTF==1.1.1
-email-validator==2.1.0.post1
-
-# Génération PDF
-xhtml2pdf==0.2.17
+# === PDF GENERATION ===
+xhtml2pdf==0.2.7
+reportlab==3.6.12
 PyPDF2==3.0.1
-reportlab==4.0.9
-pdf2image==1.16.3
+pdf2image==1.17.0
 
-# Signature numérique
-cryptography >=2.0,<40
-endesive==2.18.5
-pyopenssl==23.2.0
+# === SECURITY ===
+cryptography==42.0.5
+pyOpenSSL==24.0.0
 
-# Images et traitement
-Pillow==10.2.0
+# === COMMUNICATION ===
+twilio==8.13.0
+sendgrid==6.11.0
 
-# Envois Email et WhatsApp
-sendgrid==6.10.0
-twilio==8.10.1
-
-# Sécurité et chiffrement
-python-dotenv==1.0.1
-
-# API publique et documentation
-Flask-RESTX==1.2.0
-
-# OCR (si scan pièce d’identité)
-pytesseract==0.3.10
-
-# Monitoring / logs
-python-json-logger==2.0.7
-
-# Export Excel
-openpyxl==3.1.2
+# === DATA PROCESSING ===
 pandas==2.2.1
-
-# IA (si scoring crédit)
-torch==2.1.2
-scikit-learn==1.4.2
+openpyxl==3.1.2
 numpy==1.26.4
 
-# Accessibilité frontend (si PWA ou charts)
+# === AI / ML ===
+torch==2.1.2
+scikit-learn==1.4.2
+
+# === FRONTEND ===
 matplotlib==3.8.4
-chart-studio==1.1.0
+plotly==5.18.0
 
-# Autres
+# === UTILITIES ===
 requests==2.31.0
-PyPDF2==3.0.1
-qrcode[pil]==7.4.2
-endesiv
-PyPDF2>=3.0.0
-
-PyPDF2>=3.0.0
-
-# KREDILAKAY/requirements.txt
-fastapi==0.95.2
-uvicorn==0.22.0
-gunicorn==20.1.0
+qrcode[pil]==7.4.4
+Pillow==10.2.0
 python-multipart==0.0.6
-psycopg2-binary==2.9.6
-sqlalchemy==2.0.15
-alembic==1.11.1
-python-jose==3.3.0
-passlib==1.7.4
-python-dotenv==1.0.0
-twilio==8.2.0
-sendgrid==6.11.0
-reportlab==4.0.9
-qrcode[pil]==7.4.2
