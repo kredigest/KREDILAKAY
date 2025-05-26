@@ -1,11 +1,13 @@
+# app/routes/client.py
 from flask_restx import Namespace, Resource
 from app.services.auth import roles_required
+from flask_jwt_extended import jwt_required
 
-api = Namespace('client', description='Opérations clients')
+api = Namespace('client', description='Espace client sécurisé')
 
-@api.route('/loans')
-class ClientLoans(Resource):
-    @roles_required('client')
+@api.route('/dashboard')
+class ClientDashboard(Resource):
+    @jwt_required()
+    @roles_required('client', 'premium_client')
     def get(self):
-        """Liste des prêts du client"""
-        return {"loans": []}, 200
+        return {'message': 'Bienvenue, client !'}
