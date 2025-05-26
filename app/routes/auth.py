@@ -9,6 +9,13 @@ from app.models.user import User
 from app.schemas.auth import AuthSchema
 from config import settings
 
+from flask_jwt_extended import create_access_token
+
+def generate_token(user):
+    return create_access_token(
+        identity={'id': str(user.id), 'email': user.email, 'role': user.role},
+        additional_claims={'roles': [user.role]}
+    )
 api = Namespace('auth', description='Authentification et gestion des accès')
 
 # Modèles Swagger
